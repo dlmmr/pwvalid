@@ -33,7 +33,19 @@ public class pwValid {
 
 
     public static boolean containsUpperAndLower(String password) {
-        return false;
+        if (password == null || password.isEmpty()) return false;
+
+        boolean hasUpper = false;
+        boolean hasLower = false;
+
+        for (char c : password.toCharArray()) {
+            if (c >= 'A' && c <= 'Z') hasUpper = true;
+            else if (c >= 'a' && c <= 'z') hasLower = true;
+
+
+            if (hasUpper && hasLower) return true; // Früh abbrechen, sobald beide gefunden
+        }
+        return false; // Wenn nur Upper oder nur Lower vorhanden ist → false
     }
 
     public static boolean containsSpecialChar(String password, String allowed) {

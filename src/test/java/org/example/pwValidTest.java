@@ -98,4 +98,41 @@ class pwValidTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void containsUpperAndLower_simpleCheckIfStringContainsUpperAndLower() {
+        //Given
+        String password = "Password";
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.containsUpperAndLower(password);
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void containsUpperAndLower_onlyUppercase() {
+        //Given
+        String password = "PASSWORD";
+        boolean expected = false;
+
+        //When
+        boolean actual = pwValid.containsUpperAndLower(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void containsUpperAndLower_onlyLowercase() {
+        //Given
+        String password = "password";
+        boolean expected = false;
+
+        //When
+        boolean actual = pwValid.containsUpperAndLower(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
 }
