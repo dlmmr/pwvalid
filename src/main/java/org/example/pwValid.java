@@ -6,7 +6,7 @@ public class pwValid {
     }
 
     public static boolean isNull(String password) {
-        return false;
+        return password == null;
     }
 
     public static boolean isBlank(String password) {
