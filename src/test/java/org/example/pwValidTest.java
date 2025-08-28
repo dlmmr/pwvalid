@@ -13,7 +13,7 @@ class pwValidTest {
         //When
         boolean resultNull = pwValid.isNull(password);
         //Then
-        assertEquals(true, resultNull, "null sollte true liefern");
+        assertEquals(true, resultNull); //null sollte true liefern
 
     }
 
@@ -24,7 +24,7 @@ class pwValidTest {
         //When
         boolean resultEmpty = pwValid.isNull(password);
         //Then
-        assertEquals(false, resultEmpty, "leerer String sollte false liefern");
+        assertEquals(false, resultEmpty); //leerer String sollte false liefern
 
     }
 
@@ -35,7 +35,7 @@ class pwValidTest {
         //When
         boolean resultNormal = pwValid.isNull(password);
         //Then
-        assertEquals(false, resultNormal, "normaler String sollte false liefern");
+        assertEquals(false, resultNormal); //normaler String sollte false liefern
     }
 
     @Test
@@ -46,6 +46,19 @@ class pwValidTest {
         //When
         boolean actual = pwValid.isBlank(password);
         //Then
-        assertEquals(expected, actual, "leerer String sollte false liefern");
+        assertEquals(expected, actual); //leerer String sollte false liefern
+    }
+
+    @Test
+    void hasMinLength() {
+        //Given
+        String password = "password";
+        int min = 8;
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.hasMinLength(password, min);
+        //Then
+        assertEquals(expected, actual);
+
     }
 }

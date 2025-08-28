@@ -16,6 +16,7 @@ public class pwValid {
     }
 
     public static boolean hasMinLength(String password, int min) {
+        if (password.length() >= min) return true;
         return false;
     }
 
