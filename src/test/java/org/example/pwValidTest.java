@@ -162,4 +162,43 @@ class pwValidTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void hasMinGroups() {
+        //Given
+        String password = "PassworD123";
+        int minUpper = 2;
+        int minLower = 2;
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.hasMinGroups(password, minUpper, minLower);
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void hasMinGroups_notEnoughUpper() {
+        //Given
+        String password = "password123";
+        int minUpper = 2;
+        int minLower = 2;
+        boolean expected = false;
+        //When
+        boolean actual = pwValid.hasMinGroups(password, minUpper, minLower);
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void hasMinGroups_notEnoughLower() {
+        //Given
+        String password = "PASSWORD123";
+        int minUpper = 2;
+        int minLower = 2;
+        boolean expected = false;
+        //When
+        boolean actual = pwValid.hasMinGroups(password, minUpper, minLower);
+        //Then
+        assertEquals(expected, actual);
+    }
+
 }

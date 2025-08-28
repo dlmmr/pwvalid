@@ -33,8 +33,6 @@ public class pwValid {
 
 
     public static boolean containsUpperAndLower(String password) {
-        if (password == null || password.isEmpty()) return false;
-
         boolean hasUpper = false;
         boolean hasLower = false;
 
@@ -56,9 +54,19 @@ public class pwValid {
         return false;
     }
 
-    public static boolean hasMinGroups(String password, int requiredGroups) {
-        return false;
+    public static boolean hasMinGroups(String password, int minUpper, int minLower) {
+        int countUpper = 0;
+        int countLower = 0;
+
+        for (char c : password.toCharArray())
+            if (Character.isUpperCase(c)) {
+                countUpper++;
+            } else if (Character.isLowerCase(c)) {
+                countLower++;
+            }
+        return countUpper >= minUpper && countLower >= minLower;
     }
+
 
     public static boolean isCommonPassword(String password) {
         return false;
