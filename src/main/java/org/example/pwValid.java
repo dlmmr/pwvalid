@@ -1,4 +1,5 @@
 package org.example;
+import java.util.Arrays;
 
 public class pwValid {
     public static void main(String[] args) {
@@ -69,6 +70,9 @@ public class pwValid {
 
 
     public static boolean isCommonPassword(String password) {
-        return false;
+        String[] commonPasswords = {"123456", "password", "123456789", "12345678",
+                "qwerty", "abc123", "111111", "123123", "admin", "letmein"};
+        return Arrays.asList(commonPasswords).contains(password);
     }
 }
+
