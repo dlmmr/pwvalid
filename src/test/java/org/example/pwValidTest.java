@@ -77,10 +77,8 @@ class pwValidTest {
         //Given
         String password = "password";
         boolean expected = false;
-
         //When
         boolean actual = pwValid.containsDigit(password);
-
         //Then
         assertEquals(expected, actual);
     }
@@ -90,10 +88,8 @@ class pwValidTest {
         //Given
         String password = "passw0rd";
         boolean expected = true;
-
         //When
         boolean actual = pwValid.containsDigit(password);
-
         //Then
         assertEquals(expected, actual);
     }
@@ -114,10 +110,8 @@ class pwValidTest {
         //Given
         String password = "PASSWORD";
         boolean expected = false;
-
         //When
         boolean actual = pwValid.containsUpperAndLower(password);
-
         //Then
         assertEquals(expected, actual);
     }
@@ -127,10 +121,43 @@ class pwValidTest {
         //Given
         String password = "password";
         boolean expected = false;
-
         //When
         boolean actual = pwValid.containsUpperAndLower(password);
+        //Then
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    void containsSpecialChar() {
+        //Given
+        String password = "password12?";
+        String allowed = "!@#$%^&*()-_+=?.,;:";
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.containsSpecialChar(password, allowed);
+        //Then
+        assertEquals(expected, actual);
+    }
+    @Test
+    void containsSpecialChar_noSpecialCharInPassword() {
+        //Given
+        String password = "password123";
+        String allowed = "!@#$%^&*()-_+=?.,;:";
+        boolean expected = false;
+        //When
+        boolean actual = pwValid.containsSpecialChar(password, allowed);
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void containsSpecialChar_multipleSpecialCharsInPassword() {
+        //Given
+        String password = "Pa$$word!";
+        String allowed = "!@#$%^&*()-_+=?.,;:";
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.containsSpecialChar(password, allowed);
         //Then
         assertEquals(expected, actual);
     }

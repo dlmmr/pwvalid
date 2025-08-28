@@ -49,6 +49,10 @@ public class pwValid {
     }
 
     public static boolean containsSpecialChar(String password, String allowed) {
+        allowed = "!@#$%^&*()-_+=?.,;:";
+        for (char c : password.toCharArray()) {
+            if (allowed.indexOf(c) >= 0) return true;
+        }
         return false;
     }
 
