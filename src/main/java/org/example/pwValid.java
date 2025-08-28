@@ -74,5 +74,32 @@ public class pwValid {
                 "qwerty", "abc123", "111111", "123123", "admin", "letmein"};
         return Arrays.asList(commonPasswords).contains(password);
     }
+
+    public static boolean isValid(String password) {
+        // Null- und Blank-Check
+        if (isNull(password) || isBlank(password)) return false;
+
+        // Mindestlänge
+        if (!hasMinLength(password, 8)) return false;
+
+        // Ziffer
+        if (!containsDigit(password)) return false;
+
+        // Groß- und Kleinbuchstaben
+        if (!containsUpperAndLower(password)) return false;
+
+        // Sonderzeichen (definierte erlaubte Menge)
+        String allowedSpecial = "!@#$%^&*()-_+=?.,;:";
+        if (!containsSpecialChar(password, allowedSpecial)) return false;
+
+        // Mindestanzahl Groß-/Kleinbuchstaben
+        if (!hasMinGroups(password, 2, 2)) return false;
+
+        // Keine häufigen Passwörter
+        if (isCommonPassword(password)) return false;
+
+        // Alle Checks bestanden
+        return true;
+    }
 }
 

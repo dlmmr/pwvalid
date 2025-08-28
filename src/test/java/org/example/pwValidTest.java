@@ -239,4 +239,42 @@ class pwValidTest {
         //Then
         assertEquals(expected, actual);
     }
+
+    @Test
+    void isValid() {
+        //Given
+        String password = "PassworD123?";
+        boolean expected  = true;
+        //When
+        boolean actual = pwValid.isValid(password);
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void isValid_missingDigit_returnsFalse() {
+        //Given
+        String password = "Password!"; // enthält kein Zahlenzeichen
+        boolean expected = false;
+
+        //When
+        boolean actual = pwValid.isValid(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void isValid_missingSpecialChar_returnsFalse() {
+        //Given
+        String password = "Password12"; // enthält kein Sonderzeichen
+        boolean expected = false;
+
+        //When
+        boolean actual = pwValid.isValid(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
 }
