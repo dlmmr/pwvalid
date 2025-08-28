@@ -21,8 +21,16 @@ public class pwValid {
     }
 
     public static boolean containsDigit(String password) {
-        return false;
+        int count = 0; // zählt gefundene Ziffern
+
+        for (char c : password.toCharArray()) {
+            if (c >= '0' && c <= '9') { //umgehen der Unicode falle in dem wir den Zahlenbereich genau eingrenzen
+                count++;  //Zähler wird erhöht wenn ein c dem eingegebenen Zahlenbereich entspricht
+            }
+        }
+        return count > 0; // true, wenn mindestens eine Ziffer gefunden, kein Unterschied ob mehrere oder nicht
     }
+
 
     public static boolean containsUpperAndLower(String password) {
         return false;

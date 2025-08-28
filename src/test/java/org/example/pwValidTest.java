@@ -61,4 +61,41 @@ class pwValidTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    void containsDigit() {
+        //Given
+        String password = "password123";
+        boolean expected = true;
+        //When
+        boolean actual = pwValid.containsDigit(password);
+        //Then
+        assertEquals(expected, actual);
+    }
+    @Test
+    void containsDigit_noDigits() {
+        //Given
+        String password = "password";
+        boolean expected = false;
+
+        //When
+        boolean actual = pwValid.containsDigit(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void containsDigit_oneDigit() {
+        //Given
+        String password = "passw0rd";
+        boolean expected = true;
+
+        //When
+        boolean actual = pwValid.containsDigit(password);
+
+        //Then
+        assertEquals(expected, actual);
+    }
+
 }
