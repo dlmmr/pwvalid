@@ -37,4 +37,15 @@ class pwValidTest {
         //Then
         assertEquals(false, resultNormal, "normaler String sollte false liefern");
     }
+
+    @Test
+    void isBlank_checkIfStringIsBlank() {
+        //Given
+        String password = "";
+        boolean expected =true;
+        //When
+        boolean actual = pwValid.isBlank(password);
+        //Then
+        assertEquals(expected, actual, "leerer String sollte false liefern");
+    }
 }

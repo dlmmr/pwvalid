@@ -10,6 +10,8 @@ public class pwValid {
     }
 
     public static boolean isBlank(String password) {
+        if (password == null) return true;
+        if (password.trim().length() == 0) return true;
         return false;
     }
 
